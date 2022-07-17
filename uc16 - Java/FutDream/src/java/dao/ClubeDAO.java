@@ -109,6 +109,7 @@ public class ClubeDAO {
             stmt.setString(10, clu.getCnpj());
             stmt.setString(11, clu.getSobre());
             stmt.setString(12, clu.getResponsavel_cadastro());
+            stmt.setInt(13, clu.getIdclube());
             stmt.executeUpdate();
             return true;
         } catch (Exception e) {

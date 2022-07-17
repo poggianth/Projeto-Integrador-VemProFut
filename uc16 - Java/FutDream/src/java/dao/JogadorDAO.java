@@ -19,11 +19,6 @@ public class JogadorDAO {
     public boolean create(Jogador jogador){
         con = MyConnection.getConnection();
         
-        /*
-        
-        idjogador
-nome data_nasc sexo telefone email nacionalidade estado cidade cep posicao_principal posicao_secundaria altura peso 
-        */
         
         String sql = "insert into jogador(nome, data_nasc, sexo, telefone, email, nacionalidade, estado, cidade, cep, posicao_principal, posicao_secundaria, altura, peso) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = null;
@@ -67,14 +62,7 @@ nome data_nasc sexo telefone email nacionalidade estado cidade cep posicao_princ
         try {
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
-            while (rs.next()) {    
-                
-                      /*
-        
-        idjogador
-nome data_nasc sexo telefone email nacionalidade estado cidade cep posicao_principal posicao_secundaria altura peso 
-        */
-                      
+            while (rs.next()) {                      
                 Jogador jog = new Jogador();
                 jog.setIdjogador(rs.getInt("idjogador"));
                 jog.setNome(rs.getString("nome"));
@@ -133,6 +121,7 @@ nome data_nasc sexo telefone email nacionalidade estado cidade cep posicao_princ
             stmt.setString(11, jog.getPosicao_secundaria());
             stmt.setFloat(12, jog.getAltura());
             stmt.setFloat(13, jog.getPeso());
+            stmt.setInt(14, jog.getIdjogador());
             stmt.executeUpdate();
             return true;
         } catch (Exception e) {

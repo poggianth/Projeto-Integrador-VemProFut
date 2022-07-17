@@ -109,6 +109,8 @@ public class ExperienciasDAO {
 
             stmt.setString(7, exp.getConquistas());
             stmt.setInt(8, exp.getIdjogador());
+            stmt.setInt(9, exp.getIdexperiencias());
+
             stmt.executeUpdate();
             return true;
         } catch (Exception e){
